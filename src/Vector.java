@@ -2,20 +2,21 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Vector {
-    private ArrayList<Float> vals;
+    private ArrayList<Double> vals;
 
-    public Vector(float... values) {
+    public Vector(double... values) {
         vals = new ArrayList(Arrays.asList(values));
     }
-    public float distanceFrom(Vector v){
-        float distance = 0;
+    public double distanceFrom(Vector v){
+        double distance = 0;
         for(int i = 0; i < vals.size(); i++){
+            System.out.println(vals.get(i) - v.getVals().get(i));
             distance += Math.pow(vals.get(i) - v.getVals().get(i), 2);
         }
-        return (float)Math.sqrt(distance);
+        return Math.sqrt(distance);
     }
 
-    public ArrayList<Float> getVals() {
+    public ArrayList<Double> getVals() {
         return vals;
     }
 }

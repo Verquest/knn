@@ -10,7 +10,7 @@ public class Classifier {
     }
 
     public String classify(){
-        TreeMap<Float, String> distances = new TreeMap<>();
+        TreeMap<Double, String> distances = new TreeMap<>();
         for(Map.Entry<String, ArrayList<Vector>> entry: vectors.entrySet()){
             for(Vector vector: entry.getValue()) {
                 for (Vector vector1 : entry.getValue()) {
@@ -21,9 +21,9 @@ public class Classifier {
         findKNN(3, distances);
         return "";
     }
-    private void findKNN(int n, TreeMap<Float, String> distances) {
-        HashMap<String, Float> nearestNeighbors = new HashMap<>();
-        for (Map.Entry<Float, String> entry : distances.entrySet()) {
+    private void findKNN(int n, TreeMap<Double, String> distances) {
+        HashMap<String, Double> nearestNeighbors = new HashMap<>();
+        for (Map.Entry<Double, String> entry : distances.entrySet()) {
             nearestNeighbors.put(entry.getValue(), entry.getKey());
             System.out.println(entry.getValue());
         }
