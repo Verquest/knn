@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Classifier {
     private HashMap<String, ArrayList<Vector>> vectors;
@@ -12,22 +9,24 @@ public class Classifier {
         this.toClassify = toClassify;
     }
 
-    public int classify(){
-        HashMap<String, ArrayList<Float>> distances = new HashMap<>();
+    public String classify(){
+        TreeMap<Float, String> distances = new TreeMap<>();
         for(Map.Entry<String, ArrayList<Vector>> entry: vectors.entrySet()){
-            distances.put(entry.getKey(), new ArrayList<>());
             for(Vector vector: entry.getValue()) {
                 for (Vector vector1 : entry.getValue()) {
-                    distances.get(entry.getKey()).add(vector.distanceFrom(vector1));
+                    distances.put(vector.distanceFrom(vector1), entry.getKey());
                 }
             }
         }
-        return -1;
+        findKNN(3, distances);
+        return "";
     }
-    private String findKNN(int n, HashMap<String, ArrayList<Float>> distances) {
-        LinkedHashMap<String, Float> currentNearestNeighbor = new LinkedHashMap<>();
-        for (Map.Entry<String, ArrayList<Float>> entry : distances.entrySet()) {
-            currentNearestNeighbor.put();
+    private void findKNN(int n, TreeMap<Float, String> distances) {
+        HashMap<String, Float> nearestNeighbors = new HashMap<>();
+        for (Map.Entry<Float, String> entry : distances.entrySet()) {
+            nearestNeighbors.put(entry.getValue(), entry.getKey());
+            System.out.println(entry.getValue());
         }
+
     }
 }
