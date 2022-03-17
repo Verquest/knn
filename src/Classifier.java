@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Classifier {
@@ -14,7 +15,7 @@ public class Classifier {
     public int classify(){
         HashMap<String, ArrayList<Float>> distances = new HashMap<>();
         for(Map.Entry<String, ArrayList<Vector>> entry: vectors.entrySet()){
-            distances.put(entry.getKey(), new ArrayList<Float>());
+            distances.put(entry.getKey(), new ArrayList<>());
             for(Vector vector: entry.getValue()) {
                 for (Vector vector1 : entry.getValue()) {
                     distances.get(entry.getKey()).add(vector.distanceFrom(vector1));
@@ -23,7 +24,10 @@ public class Classifier {
         }
         return -1;
     }
-    private String findKNN(int n, HashMap<String, ArrayList<Float>> distances){
-        
+    private String findKNN(int n, HashMap<String, ArrayList<Float>> distances) {
+        LinkedHashMap<String, Float> currentNearestNeighbor = new LinkedHashMap<>();
+        for (Map.Entry<String, ArrayList<Float>> entry : distances.entrySet()) {
+            currentNearestNeighbor.put();
+        }
     }
 }
