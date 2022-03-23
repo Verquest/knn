@@ -27,6 +27,7 @@ public class Vector {
     public ArrayList<Double> getVals() {
         return vals;
     }
+    public int getLength(){return vals.size();};
 
     @Override
     public String toString() {
